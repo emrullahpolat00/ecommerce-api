@@ -20,7 +20,7 @@ Kullanılan teknolojiler:
 
 ---
 
-## 2. Kurulum Talimatları (Adım Adım)
+## 2. Kurulum Talimatları 
 
 ### 2.1 Gerekli Yazılımlar
 - Python 3.11 veya üzeri
@@ -167,14 +167,7 @@ Projede GitHub Actions kullanılarak bir CI (Continuous Integration) hattı olu�
 
 ---
 
-## 8. Ders Bilgisi
-
-Ders: Yazılım Kalite Güvencesi ve Testi  
-Seviye: Doktora  
-
----
-
-## 9. Geliştirici
+## Yazar
 
 Emrullah Polat  
-Bilgisayar Mühendisliği – Doktora Öğrencisi
+Bilgisayar Mühendisliği – Doktora Öğrencisi - Erciyes Üniversitesi
