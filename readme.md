@@ -1,4 +1,6 @@
 # E-Ticaret REST API
+![CI](https://github.com/emrullahpolat00/ecommerce-api/actions/workflows/ci.yml/badge.svg)
+
 FastAPI + SQLite  
 Yazılım Kalite Güvencesi ve Testi (Doktora) Dersi Projesi
 
