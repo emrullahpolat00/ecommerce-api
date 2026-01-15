@@ -23,7 +23,7 @@ Projenin temel amacı; **API geliştirme, otomatik test süreçleri, test türle
   - Sistem / Uçtan Uca (E2E) Testler
 - Kod kapsama (coverage) analizi
 - GitHub Actions ile CI (Sürekli Entegrasyon)
-- Windows işletim sistemi ile uyumlu yapı
+
 
 ---
 
