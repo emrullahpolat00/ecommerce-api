@@ -1,87 +1,180 @@
-# E-Ticaret REST API  
-**FastAPI + SQLite | Yazılım Kalite Güvencesi ve Testi Dersi Projesi**
+# E-Ticaret REST API
+FastAPI + SQLite  
+Yazılım Kalite Güvencesi ve Testi (Doktora) Dersi Projesi
 
-Bu depo, **Yazılım Kalite Güvencesi ve Testi** doktora dersi kapsamında geliştirilmiş bir **REST tabanlı E-Ticaret API** projesini içermektedir.  
-Projenin temel amacı; **API geliştirme, otomatik test süreçleri, test türleri (Unit / Integration / System), kapsama (coverage) analizi ve CI (Continuous Integration)** kavramlarını uygulamalı olarak göstermektir.
-
----
-
-## 📌 Proje Özellikleri
-- **5 adet REST kaynağı (resource):**
-  - `users`
-  - `categories`
-  - `products`
-  - `orders`
-  - `reviews`
-- SQLite veritabanı
-- Kaynaklar arası ilişkiler (Category–Product, User–Order, User/Product–Review)
-- Tüm kaynaklar için CRUD işlemleri
-- Swagger / OpenAPI dokümantasyonu
-- Otomatik test altyapısı:
-  - Unit Testler
-  - Integration Testler
-  - Sistem / Uçtan Uca (E2E) Testler
-- Kod kapsama (coverage) analizi
-- GitHub Actions ile CI (Sürekli Entegrasyon)
-
+Bu proje, Yazılım Kalite Güvencesi ve Testi doktora dersi kapsamında geliştirilmiş bir REST tabanlı E-Ticaret API uygulamasıdır. Projenin amacı; REST API geliştirme sürecinde test türlerinin (Unit, Integration, Sistem/Uçtan Uca), kod kapsama analizinin ve CI/CD süreçlerinin uygulamalı olarak gösterilmesidir.
 
 ---
 
-## 🛠️ Kullanılan Teknolojiler
-- **FastAPI**
-- **SQLite**
-- **SQLAlchemy**
-- **Pytest**
-- **pytest-cov**
-- **GitHub Actions**
+## 1. Proje Açıklaması ve Kullanılan Teknolojiler
+
+Proje, bir e-ticaret sisteminin temel işlevlerini sağlayan REST servislerinden oluşmaktadır. Kullanıcılar, ürünler, kategoriler, siparişler ve değerlendirmeler için CRUD (Create, Read, Update, Delete) işlemleri sunulmaktadır.
+
+Kullanılan teknolojiler:
+- FastAPI
+- SQLite
+- SQLAlchemy
+- Pytest
+- pytest-cov
+- GitHub Actions
 
 ---
 
-## ▶️ Projeyi Çalıştırma
+## 2. Kurulum Talimatları (Adım Adım)
 
-### 1️⃣ Gerekli paketleri yükleyin
-```bash
-pip install -r requirements.txt
+### 2.1 Gerekli Yazılımlar
+- Python 3.11 veya üzeri
+- Git
 
-2️⃣ API sunucusunu başlatın
-uvicorn app.main:app --reload
+### 2.2 Projenin İndirilmesi
 
-3️⃣ Tarayıcıdan erişim
-  Swagger Arayüzü: http://127.0.0.1:8000/docs
-  Sağlık Kontrolü: http://127.0.0.1:8000/health
+    git clone https://github.com/emrullahpolat00/ecommerce-api.git
+    cd ecommerce-api
 
-🧪 Testleri Çalıştırma
+### 2.3 Gerekli Paketlerin Kurulması
 
-Tüm testleri çalıştırma
-  python -m pytest
+    pip install -r requirements.txt
 
-Testleri kapsama analizi ile çalıştırma
-  python -m pytest --cov=app --cov-report=term-missing
-  Mevcut toplam kod kapsama oranı: ~%88
+### 2.4 API Sunucusunun Çalıştırılması
 
-🧩 Test Türleri
+    uvicorn app.main:app --reload
 
-Unit Testler
-  İş mantığı ve yardımcı fonksiyonların test edilmesi
-  tests/unit
+Uygulama varsayılan olarak aşağıdaki adreste çalışır:
 
-Integration Testler
-  API uç noktalarının veritabanı ile birlikte test edilmesi
-  tests/integration
+    http://127.0.0.1:8000
 
-Sistem / Uçtan Uca (E2E) Testler
-  Gerçek kullanıcı senaryolarının uçtan uca test edilmesi
-  tests/e2e
+---
 
-🔄 Sürekli Entegrasyon (CI)
-Projede GitHub Actions kullanılarak CI hattı oluşturulmuştur.
-Her push ve pull request işleminde:
-  Bağımlılıklar yüklenir
-  Tüm testler otomatik olarak çalıştırılır
-  Kapsama (coverage) raporu üretilir
-CI işlemleri Windows runner üzerinde gerçekleştirilmektedir.
+## 3. API Endpoint Listesi ve Kullanım Örnekleri
 
-👤 Yazar
+### 3.1 Users
+- GET /users
+- GET /users/{id}
+- POST /users
+- PUT /users/{id}
+- DELETE /users/{id}
 
-Emrullah Polat
-Bilgisayar Mühendisliği – Doktora Öğrencisi - Erciyes Üniversitesi
+Örnek POST isteği:
+
+    {
+      "email": "user@example.com",
+      "full_name": "Test User"
+    }
+
+---
+
+### 3.2 Categories
+- GET /categories
+- GET /categories/{id}
+- POST /categories
+- PUT /categories/{id}
+- DELETE /categories/{id}
+
+Örnek POST isteği:
+
+    {
+      "name": "Electronics"
+    }
+
+---
+
+### 3.3 Products
+- GET /products
+- GET /products/{id}
+- POST /products
+- PUT /products/{id}
+- DELETE /products/{id}
+
+Örnek POST isteği:
+
+    {
+      "name": "Laptop",
+      "price": 25000,
+      "category_id": 1
+    }
+
+---
+
+### 3.4 Orders
+- GET /orders
+- GET /orders/{id}
+- POST /orders
+- DELETE /orders/{id}
+
+Örnek POST isteği:
+
+    {
+      "user_id": 1,
+      "items": [
+        {"product_id": 1, "quantity": 2},
+        {"product_id": 2, "quantity": 1}
+      ]
+    }
+
+---
+
+### 3.5 Reviews
+- GET /reviews
+- GET /reviews/{id}
+- POST /reviews
+- PUT /reviews/{id}
+- DELETE /reviews/{id}
+
+Örnek POST isteği:
+
+    {
+      "user_id": 1,
+      "product_id": 1,
+      "rating": 5,
+      "comment": "Ürün çok iyi"
+    }
+
+---
+
+## 4. Swagger / OpenAPI Dokümantasyonu
+
+FastAPI tarafından otomatik olarak üretilen Swagger / OpenAPI dokümantasyonuna aşağıdaki URL üzerinden erişilebilir:
+
+    http://127.0.0.1:8000/docs
+
+---
+
+## 5. Testlerin Çalıştırılması
+
+Tüm testleri çalıştırmak için:
+
+    python -m pytest
+
+Kapsama (coverage) analizi ile testleri çalıştırmak için:
+
+    python -m pytest --cov=app --cov-report=term-missing
+
+Projedeki mevcut toplam kod kapsama oranı yaklaşık %88’dir.
+
+---
+
+## 6. Test Türleri
+
+- Unit Testler: tests/unit
+- Integration Testler: tests/integration
+- Sistem / Uçtan Uca (E2E) Testler: tests/e2e
+
+---
+
+## 7. CI/CD Süreci
+
+Projede GitHub Actions kullanılarak bir CI (Continuous Integration) hattı oluşturulmuştur. Her push ve pull request işleminde testler otomatik olarak çalıştırılmakta ve kapsama raporu üretilmektedir.
+
+---
+
+## 8. Ders Bilgisi
+
+Ders: Yazılım Kalite Güvencesi ve Testi  
+Seviye: Doktora  
+
+---
+
+## 9. Geliştirici
+
+Emrullah Polat  
+Bilgisayar Mühendisliği – Doktora Öğrencisi
