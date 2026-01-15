@@ -1,32 +1,33 @@
-# Ecommerce API  
-**FastAPI + SQLite | Software Quality Assurance & Testing Project**
+# E-Ticaret REST API  
+**FastAPI + SQLite | Yazılım Kalite Güvencesi ve Testi Dersi Projesi**
 
-This repository contains a RESTful E-commerce API developed as part of the **Software Quality Assurance and Testing (PhD level)** course.  
-The project focuses on **API design, automated testing (Unit / Integration / E2E), coverage analysis, and CI pipelines**.
+Bu depo, **Yazılım Kalite Güvencesi ve Testi** doktora dersi kapsamında geliştirilmiş bir **REST tabanlı E-Ticaret API** projesini içermektedir.  
+Projenin temel amacı; **API geliştirme, otomatik test süreçleri, test türleri (Unit / Integration / System), kapsama (coverage) analizi ve CI (Continuous Integration)** kavramlarını uygulamalı olarak göstermektir.
 
 ---
 
-## 📌 Features
-- REST API with **5 resources**:
+## 📌 Proje Özellikleri
+- **5 adet REST kaynağı (resource):**
   - `users`
   - `categories`
   - `products`
   - `orders`
   - `reviews`
-- SQLite database with relational structure
-- Full CRUD operations
-- Swagger / OpenAPI documentation
-- Automated testing:
-  - Unit tests
-  - Integration tests
-  - End-to-End (System) tests
-- Code coverage analysis
-- Continuous Integration with **GitHub Actions**
-- Windows-compatible setup
+- SQLite veritabanı
+- Kaynaklar arası ilişkiler (Category–Product, User–Order, User/Product–Review)
+- Tüm kaynaklar için CRUD işlemleri
+- Swagger / OpenAPI dokümantasyonu
+- Otomatik test altyapısı:
+  - Unit Testler
+  - Integration Testler
+  - Sistem / Uçtan Uca (E2E) Testler
+- Kod kapsama (coverage) analizi
+- GitHub Actions ile CI (Sürekli Entegrasyon)
+- Windows işletim sistemi ile uyumlu yapı
 
 ---
 
-## 🛠️ Technologies
+## 🛠️ Kullanılan Teknolojiler
 - **FastAPI**
 - **SQLite**
 - **SQLAlchemy**
@@ -36,52 +37,51 @@ The project focuses on **API design, automated testing (Unit / Integration / E2E
 
 ---
 
-## ▶️ Run Locally
+## ▶️ Projeyi Çalıştırma
 
-### 1️⃣ Install dependencies
+### 1️⃣ Gerekli paketleri yükleyin
 ```bash
 pip install -r requirements.txt
 
-2️⃣ Start the API server
+2️⃣ API sunucusunu başlatın
 uvicorn app.main:app --reload
 
-3️⃣ Open in browser
+3️⃣ Tarayıcıdan erişim
+  Swagger Arayüzü: http://127.0.0.1:8000/docs
+  Sağlık Kontrolü: http://127.0.0.1:8000/health
 
-Swagger UI: http://127.0.0.1:8000/docs
-Health Check: http://127.0.0.1:8000/health
+🧪 Testleri Çalıştırma
 
-🧪 Run Tests
-Run all tests
-python -m pytest
+Tüm testleri çalıştırma
+  python -m pytest
 
-Run tests with coverage
-python -m pytest --cov=app --cov-report=term-missing
-Current total coverage: ~88%
+Testleri kapsama analizi ile çalıştırma
+  python -m pytest --cov=app --cov-report=term-missing
+  Mevcut toplam kod kapsama oranı: ~%88
 
-🧩 Test Types
+🧩 Test Türleri
 
-Unit Tests
-Location:
-tests/unit
+Unit Testler
+  İş mantığı ve yardımcı fonksiyonların test edilmesi
+  tests/unit
 
-Integration Tests
-Location:
-tests/integration
+Integration Testler
+  API uç noktalarının veritabanı ile birlikte test edilmesi
+  tests/integration
 
-End-to-End (System) Tests
-Location:
-    tests/e2e
+Sistem / Uçtan Uca (E2E) Testler
+  Gerçek kullanıcı senaryolarının uçtan uca test edilmesi
+  tests/e2e
 
-🔄 Continuous Integration (CI)
-    GitHub Actions pipeline automatically runs:
-        Dependency installation
-        All tests
-        Coverage reporting
-    CI is executed on Windows runner
-    Pipeline status can be viewed under the Actions tab
+🔄 Sürekli Entegrasyon (CI)
+Projede GitHub Actions kullanılarak CI hattı oluşturulmuştur.
+Her push ve pull request işleminde:
+  Bağımlılıklar yüklenir
+  Tüm testler otomatik olarak çalıştırılır
+  Kapsama (coverage) raporu üretilir
+CI işlemleri Windows runner üzerinde gerçekleştirilmektedir.
 
-
-👤 Author
+👤 Yazar
 
 Emrullah Polat
-PhD Student – Computer Engineering - Erciyes University
+Bilgisayar Mühendisliği – Doktora Öğrencisi - Erciyes Üniversitesi
